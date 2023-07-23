@@ -4,8 +4,6 @@ import { commandRegister } from './scripts/commandRegister';
 import { eventLoader } from './scripts/eventLoader';
 import { Bot } from './libs/bot';
 
-console.log(Bun.env.DISCORD_TOKEN);
-
 // Initialise Client
 const bot = Bot.getInstance()
 
