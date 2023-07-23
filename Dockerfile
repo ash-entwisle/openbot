@@ -14,5 +14,8 @@ COPY . .
 # install bun dependencies
 RUN bun install
 
+# run unit tests
+RUN bun test
+
 # start app
 CMD [ "bun", "start" ]
