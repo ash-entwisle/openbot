@@ -11,18 +11,8 @@ RUN npm install -g bun
 # Copy app source
 COPY . .
 
-# Issue with bun build/install, once fixed, use this
-
-# # install dependencies
-# RUN bun install
-# # Bundle app source
-# RUN bun pack
-# # move target folder to root
-# RUN mv target /target   
-# # remove source code
-# RUN rm -rf /usr/src/app
-# # set working directory
-# WORKDIR /target
+# install bun dependencies
+RUN bun install
 
 # start app
 CMD [ "bun", "start" ]
