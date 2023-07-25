@@ -5,7 +5,9 @@ export interface Reply {
     interaction: any;
     title?: string;
     content?: string;
+    color?: string;
     ephemeral?: boolean;
+    timestamp?: boolean;
 }
 
 export function message(data: Reply) {
@@ -16,12 +18,11 @@ export function message(data: Reply) {
 }
 
 export function embed(data: Reply) {
-    let embed = new EmbedBuilder()
-        .setColor(Bot.getInstance().config.embed.color)
-        .setTimestamp();
+    let embed = new EmbedBuilder().setColor(data.color ?? Bot.getInstance().config.embed.color)
     
     if (data.title) embed.setTitle(data.title);
     if (data.content) embed.setDescription(data.content);
+    if (data.timestamp) embed.setTimestamp();
 
     return data.interaction.reply({
         embeds: [embed],
