@@ -15,20 +15,25 @@ export interface ICommandOption {
     name: string;
     description: string;
     required?: boolean;
-    // choices?: ICommandOptionChoice[]; // TODO: Implement choices
+    choices?: ICommandOptionChoice[]; // TODO: Implement choices, may need to make a pr to discord.js
+}
+
+export interface ICommandOptionChoice {
+    name: string;
+    value: string | number;
 }
 
 export enum ECommandOption {
-    StringOption = "STRING",
-    IntegerOption = "INTEGER",
-    NumberOption = "NUMBER",
-    BooleanOption = "BOOLEAN",
-    UserOption = "USER",
-    ChannelOption = "CHANNEL",
-    RoleOption = "ROLE",
-    MentionableOption = "MENTIONABLE",
-    AttachmentOption = "ATTACHMENT",
-}
+    StringOption,
+    IntegerOption,
+    NumberOption,
+    BooleanOption,
+    UserOption,
+    ChannelOption,
+    RoleOption,
+    MentionableOption,
+    AttachmentOption,
+} 
 
 
 export class Command {
@@ -79,6 +84,12 @@ export class Command {
                         break;
                     default:
                         throw new Error(`Invalid command option type: ${option.type}`);
+                }
+
+                if (option.choices) {
+                    for (const choice of option.choices) {
+                        tempOption.addChoices({name: choice.name, value: choice.value});
+                    }
                 }
                 
                 tempOption
