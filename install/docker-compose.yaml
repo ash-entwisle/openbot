@@ -1,0 +1,9 @@
+
+services:
+  openbot:
+    image: ghcr.io/ash-entwisle/openbot:main
+    volumes:
+      - ./config.json:/usr/src/app/config.json
+    env_file:
+      - ./.env
+    restart: unless-stopped

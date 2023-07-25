@@ -15,7 +15,7 @@ export class Bot {
         this.client = new Client({ intents: [GatewayIntentBits.Guilds] });
         this.commands = new Collection();
         this.events = new Collection();
-        this.config = require('../../config.json'); 
+        this.config = require(`../../${Bun.env.BOT_CONFIG}`); 
     }
 
     public static getInstance(): Bot {
