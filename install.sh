@@ -18,7 +18,7 @@ echo "DISCORD_ID=your_bot_id" >> .env
 
 # get docker-compose file
 echo "Downloading docker-compose file..."
-curl -fsSL https://raw.githubusercontent.com/ash-entwisle/openbot/main/docker-compose.yml > docker-compose.yml
+curl -fsSL https://raw.githubusercontent.com/ash-entwisle/openbot/main/docker-compose.yaml > docker-compose.yml
 
 # get license file
 echo "Fetching license..."
