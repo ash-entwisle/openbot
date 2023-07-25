@@ -1,4 +1,3 @@
-import { Bot } from '../../libs/bot';
 import { Command, ECommandOption } from '../../libs/command';
 import { embed } from '../../libs/reply';
 
