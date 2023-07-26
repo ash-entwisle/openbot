@@ -5,6 +5,8 @@ export interface Reply {
     interaction: any;
     title?: string;
     content?: string;
+    footer?: string;
+    footerIcon?: string;
     color?: string;
     ephemeral?: boolean;
     timestamp?: boolean;
@@ -23,6 +25,7 @@ export function embed(data: Reply) {
     if (data.title) embed.setTitle(data.title);
     if (data.content) embed.setDescription(data.content);
     if (data.timestamp) embed.setTimestamp();
+    if (data.footer) embed.setFooter({text: data.footer});
 
     return data.interaction.reply({
         embeds: [embed],

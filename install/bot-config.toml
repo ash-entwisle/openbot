@@ -1,0 +1,19 @@
+[info]
+
+name = "Bot Name"
+description = "Bot Description"
+invite = "Bot Invite Link"
+
+[embed]
+
+color = "00FF00"
+
+[admin]
+
+users = [
+    "609463800818827264"
+]
+
+guilds = [
+    "1027539359945203722"
+]
