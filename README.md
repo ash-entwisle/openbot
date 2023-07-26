@@ -29,7 +29,7 @@ So far, I have tested it on Debian and Arch, it *should* work on wsl and other d
 Run the install script:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/ash-entwisle/openbot/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/ash-entwisle/openbot/main/install/install.sh | sh
 ```
 
 then edit the `.env` and the `config.json` file:  
