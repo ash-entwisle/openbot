@@ -17,7 +17,7 @@ echo "BOT_CONFIG=config.toml" >> .env
 
 # get docker-compose file
 echo "Downloading docker-compose file..."
-curl -fsSL https://raw.githubusercontent.com/ash-entwisle/openbot/main/docker-compose.yml > docker-compose.yml
+curl -fsSL https://raw.githubusercontent.com/ash-entwisle/openbot/main/docker-compose.yaml > docker-compose.yaml
 
 # get license file
 echo "Fetching license..."
