@@ -5,7 +5,7 @@ cd $(pwd)/openbot
 
 # get config file
 echo "Downloading config file..."
-curl -fsSL https://raw.githubusercontent.com/ash-entwisle/openbot/main/install/bot-config.json > config.json
+curl -fsSL https://raw.githubusercontent.com/ash-entwisle/openbot/main/install/bot-config.toml > config.toml
 
 # get env file
 echo "Fetching enviroment variables"
@@ -13,7 +13,7 @@ echo "DISCORD_TOKEN=your_token" > .env
 echo "DISCORD_ID=your_bot_id" >> .env
 echo "" >> .env
 echo "# === DO NOT CHANGE ANYTHING BELOW THIS LINE ===" >> .env
-echo "BOT_CONFIG=config.json" >> .env
+echo "BOT_CONFIG=config.toml" >> .env
 
 # get docker-compose file
 echo "Downloading docker-compose file..."
