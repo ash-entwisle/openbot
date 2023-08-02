@@ -1,3 +1,7 @@
+# Archived
+
+> This project has moved [here](https://github.com/ash-entwisle/openbot-rs). It *should* still work for the time being, but im no longer going to maintain it.  
+
 # openbot
 
 I got bored over the summer, so I decided to learn typescript by making a discord bot. 
