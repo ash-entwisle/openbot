@@ -16,10 +16,10 @@ RUN unzip bun-linux-x64.zip
 # start building the main image
 FROM frolvlad/alpine-glibc:latest
 
-# install app dependencies
-RUN apk add lua5.4
-RUN apk add python3
-RUN apk add nodejs-current
+# deps for eval command, remove if needed # install app dependencies
+# RUN apk add lua5.4
+# RUN apk add python3
+# RUN apk add nodejs-current
 
 # copy bun binary
 COPY --from=build /tmp/bun-linux-x64/bun /usr/local/bin/bun
