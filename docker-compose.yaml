@@ -1,0 +1,8 @@
+
+services:
+  openbot:
+    build: .
+    volumes:
+      - ./install/bot-config.toml:/app/config.toml
+    env_file:
+      - ./.env
