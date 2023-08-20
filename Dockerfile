@@ -39,7 +39,13 @@ RUN bun install
 # run unit tests
 RUN bun test
 
-# TODO: add non-root user for running the app, dk why its not working currently :(
+# add non priviledged user
+RUN addgroup -S bot 
+RUN adduser -S bot -G bot
+RUN chown -R bot:bot /app
+
+# switch to non priviledged user
+USER bot
 
 # start app
 CMD [ "bun", "start" ]
