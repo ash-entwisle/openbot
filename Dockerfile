@@ -13,6 +13,9 @@ ADD https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64.zip bu
 # unzip bun binary
 RUN unzip bun-linux-x64.zip
 
+# test bun binary
+RUN ./bun-linux-x64/bun --version
+
 # start building the main image
 FROM frolvlad/alpine-glibc:latest
 
@@ -25,7 +28,7 @@ FROM frolvlad/alpine-glibc:latest
 COPY --from=build /tmp/bun-linux-x64/bun /usr/local/bin/bun
 
 # set app working directory
-WORKDIR /usr/src/app
+WORKDIR /app/
 
 # Copy app source
 COPY . .
@@ -35,6 +38,8 @@ RUN bun install
 
 # run unit tests
 RUN bun test
+
+# TODO: add non-root user for running the app, dk why its not working currently :(
 
 # start app
 CMD [ "bun", "start" ]
