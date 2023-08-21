@@ -4,6 +4,10 @@ import { REST, Routes } from 'discord.js';
 const fs = require('node:fs');
 const path = require('node:path');
 
+/**
+ * Registers all commands in the commands directory and deploys them to Discord.
+ * @param bot - The Discord bot instance.
+ */
 export function commandRegister(bot: Bot) {
     const commands = [];
     // Grab all the command folders from the commands directory you created earlier

@@ -1,3 +1,8 @@
+/**
+ * Loads all event files from the specified directory and registers them with the bot client.
+ * @param eventsPath - The path to the directory containing the event files.
+ * @param bot - The bot instance to register the events with.
+ */
 import { Bot } from "../libs/bot";
 
 const fs = require('node:fs');

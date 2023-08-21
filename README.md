@@ -1,8 +1,7 @@
-# Archived
-
-> This project has moved [here](https://github.com/ash-entwisle/openbot-rs). It *should* still work for the time being, but im no longer going to maintain it.  
 
 # openbot
+
+> This project has moved [here](https://github.com/ash-entwisle/openbot-rs). It *should* still work for the time being, but im no longer going to actively maintain this repo.
 
 I got bored over the summer, so I decided to learn typescript by making a discord bot. 
 
@@ -36,12 +35,16 @@ Run the install script:
 curl -fsSL https://raw.githubusercontent.com/ash-entwisle/openbot/main/install/install.sh | sh
 ```
 
-then edit the `.env` and the `config.json` file:  
+then edit the `.env`
 
 ```sh
 nano .env
+```
 
-nano config.json
+Then edit the `config.toml` file:  
+
+```sh
+nano config.toml
 ```
 
 and start the docker containers:
@@ -50,88 +53,45 @@ and start the docker containers:
 docker compose up -d
 ```
 
-### From Source (running with bun)
-
-Clone the repo:
-
-```sh
-git clone https://github.com/ash-entwisle/openbot.git
-```
-
-then install the dependencies:
-
-```sh
-bun install
-```
-
-create a `.env` file  
-
-```sh
-touch .env
-```
-
-and then add the following:
-
-```sh
-DISCORD_TOKEN=your_discord_bot_token
-DISCORD_ID=your_discord_bot_id
-```
-
-edit the `config.json` file:  
-
-```sh
-nano config.json
-```
-
-and start the bot:
-
-```sh
-bun start
-```
-
-### From Source (running with docker)
-
-Clone the repo:
-
-```sh
-git clone https://github.com/ash-entwisle/openbot.git
-```
-
-create a `.env` file  
-
-```sh
-touch .env
-```
-
-and then the following:
-
-```sh
-DISCORD_TOKEN=your_discord_bot_token
-DISCORD_ID=your_discord_bot_id
-```
-
-then edit the `config.json` file:  
-
-```sh
-nano config.json
-```
-
-then build the docker image:
-
-```sh
-bun docker 
-```
-
-and then start the docker containers:
-
-```sh
-docker compose up -d
-```
 
 ## Contributing
 
 If you want to contribute, feel free to fork the repo and make a pull request. 
 If you have any questions, feel free to open an issue.  
+
+## Adding a command
+
+To add a command, create a file in a folder in `src/commands/` with the name of the command.
+For example, if you wanted to add a command called `ping`, you would create a file called `ping.ts` in `src/commands/misc`.
+Then, add the following code to the file:
+
+```ts
+import { latency } from '../../libs/sysinfo';
+import { embed } from '../../libs/reply';
+import { Command } from '../../libs/command';
+
+export const data = new Command({
+    name: 'ping',
+    description: 'Get the latency of the bot.',
+    dmPermission: true,
+    nsfw: false,
+    admin: false,
+    execute: execute
+})
+
+export async function execute(interaction: any) {
+    embed({
+        interaction: interaction,
+        title: "",
+        content: `**Latency:** \`${latency(interaction)}ms.\``,
+        ephemeral: true
+    });
+}
+```
+
+First, import all the libraries you need.
+Then, create and export a `Command` object with the properties found in the interface `ICommandData` (found in ./src/libs/command.ts).
+Then, export an `execute` function that takes an `interaction` object as an argument, this will be used to collect and format data, and send a reply.  
 
 ## License
 
