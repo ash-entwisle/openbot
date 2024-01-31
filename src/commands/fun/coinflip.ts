@@ -1,5 +1,5 @@
 import { Command, ECommandOption } from '../../libs/command';
-import { embed } from '../../libs/reply';
+import { message, EMessageType } from '../../libs/message';
 
 export const data = new Command({
     name: 'coinflip',
@@ -36,7 +36,8 @@ export async function execute(interaction: any) {
 
     let response; if (question) response = `You asked: ${question}\n`;
 
-    embed({
+    message({
+        type: EMessageType.Message,
         interaction: interaction,
         title: 'Coinflip',
         content: `${response}${choice? `You guessed **${choice}**,` : "" } The coin landed on **${result}**. ${choice ? `You were ${choice === result ? 'correct !!' : 'incorrect :('}`: "" }`,

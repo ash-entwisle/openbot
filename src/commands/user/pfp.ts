@@ -1,5 +1,5 @@
 import { Command, ECommandOption } from '../../libs/command';
-import { message } from '../../libs/reply';
+import { message, EMessageType } from '../../libs/message';
 
 export const data = new Command({
     name: 'pfp',
@@ -22,6 +22,7 @@ export async function execute(interaction: any) {
     const user = interaction.options.getUser('user') ?? interaction.user;
     const avatar = user.displayAvatarURL({ dynamic: true, size: 4096 });
     message({
+        type: EMessageType.Message,
         interaction: interaction,
         content: `**<@${user.id}>'s** Profile Picture\n${avatar}`,
         ephemeral: true

@@ -1,4 +1,4 @@
-import { embed, message } from '../../libs/reply';
+import { message, EMessageType } from '../../libs/message';
 import { Command, ECommandOption } from '../../libs/command';
 import Bun from 'bun';
 
@@ -65,7 +65,8 @@ export async function execute(interaction: any) {
 
     const endTime = Date.now();
     
-    embed({
+    message({
+        type: EMessageType.Message,
         interaction: interaction,
         title: `Running with \`${interpreter}\`:`,
         content: `\`\`\`${md}\n${script} \`\`\` \n **Output:** \`\`\` ${output}\`\`\``,

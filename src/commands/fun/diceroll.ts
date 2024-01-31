@@ -1,5 +1,5 @@
 import { Command, ECommandOption } from '../../libs/command';
-import { embed } from '../../libs/reply';
+import { message, EMessageType } from '../../libs/message';
 
 export const data = new Command({
     name: 'diceroll',
@@ -57,7 +57,8 @@ export async function execute(interaction: any) {
     
         
 
-    embed({
+    message({
+        type: EMessageType.Message,
         interaction: interaction,
         title: `Dice Roll: ${diceString}`,
         content: `Result: ${result}`,
