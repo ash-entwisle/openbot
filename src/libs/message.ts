@@ -10,6 +10,10 @@ export interface IMessage {
      */
     interaction: any;
     /**
+     * Type of the reply.
+     */
+    type: EMessageType;
+    /**
      * The title of the reply.
      * @default ""
      */
@@ -45,20 +49,26 @@ export interface IMessage {
      */
     timestamp?: boolean;
     /**
-     * Whether the reply should be sent as an embed. or a message.
-     * @default false
-     */
-    embed?: boolean;
-    /**
      * Whether the reply should be a reply to the original message.
      * @default false
      */
     noreply?: boolean;
 }
 
+export enum EMessageType {
+    /**
+     * A regular message.
+     */
+    Message,
+    /**
+     * An embed message.
+     */
+    Embed
+}
+
 
 export function message(data: IMessage) {
-    if (data.embed) {
+    if (data.type === EMessageType.Embed) {
         
         let embed = new EmbedBuilder().setColor(data.color ?? Bot.getInstance().config.embed.color)
 
