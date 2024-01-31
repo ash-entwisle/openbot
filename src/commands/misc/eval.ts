@@ -73,11 +73,6 @@ export async function execute(interaction: any) {
         ephemeral: false,
         timestamp: true,
     });
-
-    message({
-        interaction: interaction,
-        content: `This command is currently disabled.`
-    })
 }
 
 
