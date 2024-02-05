@@ -34,13 +34,14 @@ export async function execute(interaction: any) {
     // get the result of the coinflip
     const result = Math.random() < 0.5 ? 'heads' : 'tails';
 
-    let response; if (question) response = `You asked: ${question}\n`;
+    let response = "";
+    if (question) response = `You asked: ${question}\n**heads** means yes, **tails** means no.\n`;
 
     message({
         type: EMessageType.Message,
         interaction: interaction,
         title: 'Coinflip',
-        content: `${response}${choice? `You guessed **${choice}**,` : "" } The coin landed on **${result}**. ${choice ? `You were ${choice === result ? 'correct !!' : 'incorrect :('}`: "" }`,
+        content: `${response}${choice? `You guessed **${choice}**,` : "" } The coin landed on **${result}**. \n${choice ? `You were ${choice === result ? 'correct !!' : 'incorrect :('}`: "" }`,
         ephemeral: false,
         timestamp: false
     });
