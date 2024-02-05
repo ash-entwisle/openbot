@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "bun run ./src/main.ts",
-    "pack": "bun build --minify --outdir=dist --target=bun ./src/main.ts",
+    "test": "echo todo",
     "docker": "docker build . -t openbot"
   },
   "devDependencies": {
