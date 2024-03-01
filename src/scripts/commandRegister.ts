@@ -1,5 +1,6 @@
 import { Bot } from "../libs/bot";
 import { REST, Routes } from 'discord.js';
+import { Logger } from "../libs/logger";
 
 const fs = require('node:fs');
 const path = require('node:path');
@@ -25,7 +26,7 @@ export function commandRegister(bot: Bot) {
             if ('data' in command && 'execute' in command) {
                 commands.push(command.data.command.toJSON());
             } else {
-                console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+                Logger.warn(`The command at ${filePath} is missing a required "data" or "execute" property.`)
             }
         }
     }
@@ -36,7 +37,7 @@ export function commandRegister(bot: Bot) {
     // and deploy your commands!
     (async () => {
         try {
-            console.log(`Started refreshing ${commands.length} application (/) commands.`);
+            Logger.info(`Started refreshing ${commands.length} application (/) commands.`);
 
             // The put method is used to fully refresh all commands in the guild with the current set
             const data = await rest.put(
@@ -44,10 +45,11 @@ export function commandRegister(bot: Bot) {
                 { body: commands },
             );
 
-            console.log(`Successfully reloaded ${commands.length} application (/) commands.`);
+            Logger.info(`Successfully reloaded ${commands.length} application (/) commands.`);
+            
         } catch (error) {
             // And of course, make sure you catch and log any errors!
-            console.error(error);
+            console.log(error);
         }
     })();
 }
