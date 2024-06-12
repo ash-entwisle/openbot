@@ -17,6 +17,9 @@
   "dependencies": {
     "discord.js": "^14.11.0",
     "hono": "^4.0.8",
+    "openbot-commons": "*",
+    "openbot-discord": "*",
+    "openbot-backend": "*",
     "toml": "^3.0.0"
   },
   "workspaces": [

@@ -1,5 +1,5 @@
 {
-  "name": "openbot-server",
+  "name": "openbot-backend",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {

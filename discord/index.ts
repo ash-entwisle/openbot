@@ -6,28 +6,32 @@ import { Bot } from "./libs/bot";
 import { Logger } from "./libs/logger";
 
 
-Logger.info("Starting Bot...");
+function startBot() {
+  Logger.info("Starting Bot...");
 
-// Initialise Client
-const bot = Bot.getInstance();
+  // Initialise Client
+  const bot = Bot.getInstance();
 
-// create property in client to store commands
-bot.commands = commandLoader(path.join(__dirname, "commands"));
+  // create property in client to store commands
+  bot.commands = commandLoader(path.join(__dirname, "commands"));
 
-// Register Commands
-commandRegister(bot);
+  // Register Commands
+  commandRegister(bot);
 
-Logger.info("Commands registered");
+  Logger.info("Commands registered");
 
-// Load Events
-eventLoader(path.join(__dirname, "events"), bot);
+  // Load Events
+  eventLoader(path.join(__dirname, "events"), bot);
 
-Logger.info("Events loaded");
+  Logger.info("Events loaded");
 
-// login
-bot.client.login(Bun.env.DISCORD_TOKEN);
+  // login
+  bot.client.login(Bun.env.DISCORD_TOKEN);
 
-// Log that the bot is ready
-bot.client.on("ready", () => {
-  Logger.info("Bot is ready");
-});
+  // Log that the bot is ready
+  bot.client.on("ready", () => {
+    Logger.info("Bot is ready");
+  });
+}
+
+export default startBot;
