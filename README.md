@@ -1,7 +1,6 @@
 
 # openbot
 
-> This project has moved [here](https://github.com/AmmoniumStudios/openbot). It *should* still work for the time being, but im no longer going to actively maintain this repo.
 
 I got bored over the summer, so I decided to learn typescript by making a discord bot. 
 
