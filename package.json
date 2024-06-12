@@ -18,5 +18,11 @@
     "discord.js": "^14.11.0",
     "hono": "^4.0.8",
     "toml": "^3.0.0"
-  }
+  },
+  "workspaces": [
+    "discord",
+    "commons",
+    "server"
+  ],
+  "private": true
 }
