@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "bun run ./src/main.ts",
+    "build": "bun build ./src/main.ts --target=node --outfile=./target/bundle.js",
     "test": "echo todo",
     "docker": "docker build . -t openbot"
   },
@@ -16,7 +17,6 @@
   "dependencies": {
     "discord.js": "^14.11.0",
     "hono": "^4.0.8",
-    "toml": "^3.0.0",
-    "zlib-sync": "^0.1.8"
+    "toml": "^3.0.0"
   }
 }
