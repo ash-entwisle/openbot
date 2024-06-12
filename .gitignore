@@ -169,4 +169,4 @@ dist
 .pnp.\*
 
 target/
-.lockb
+*.lockb
