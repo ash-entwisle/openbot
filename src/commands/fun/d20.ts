@@ -1,5 +1,5 @@
 import { Command, ECommandOption } from '../../libs/command';
-import { embed } from '../../libs/reply';
+import { message, EMessageType } from '../../libs/message';
 
 export const data = new Command({
     name: 'd20',
@@ -52,7 +52,8 @@ export async function execute(interaction: any) {
 
     result += +rollModifier;
 
-    embed({
+    message({
+        type: EMessageType.Message,
         interaction: interaction,
         title: `Dice Roll: 1d20${rollModifier ?? ""} ${rollEnhancement ? `(with ${rollEnhancement})` : ""}`,
         content: `Result: ${result}`,

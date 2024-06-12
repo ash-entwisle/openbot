@@ -1,5 +1,5 @@
 import { latency } from '../../libs/sysinfo';
-import { embed } from '../../libs/reply';
+import { EMessageType, message } from '../../libs/message';
 import { Command } from '../../libs/command';
 
 export const data = new Command({
@@ -12,7 +12,8 @@ export const data = new Command({
 })
 
 export async function execute(interaction: any) {
-    embed({
+    message({
+        type: EMessageType.Message,
         interaction: interaction,
         title: "",
         content: `**Latency:** \`${latency(interaction)}ms.\``,

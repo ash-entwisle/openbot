@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "bun run ./src/main.ts",
-    "pack": "bun build --minify --outdir=dist --target=bun ./src/main.ts",
+    "test": "echo todo",
     "docker": "docker build . -t openbot"
   },
   "devDependencies": {
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "discord.js": "^14.11.0",
+    "hono": "^4.0.8",
     "toml": "^3.0.0",
     "zlib-sync": "^0.1.8"
   }

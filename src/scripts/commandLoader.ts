@@ -1,3 +1,5 @@
+import { Logger } from "../libs/logger";
+
 const fs = require('node:fs');
 const path = require('node:path');
 const { Collection } = require('discord.js');
@@ -19,10 +21,10 @@ export function commandLoader(foldersPath: string) {
         for (const file of commandFiles) {
             const filePath = path.join(commandsPath, file);
             const command = require(filePath);
-            if ('data' in command && 'execute' in command) {
+            if ('data' in command && 'execute' in command && !command.data.disabled) {
                 commands.set(command.data.command.name, command);
             } else {
-                console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+                Logger.warn(`The command at ${filePath} is missing a required "data" or "execute" property.`);
             }
         }
     }

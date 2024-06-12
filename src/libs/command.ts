@@ -38,6 +38,10 @@ export interface ICommandData {
      * @returns void
      */
     execute: (interaction: any) => void;
+    /**
+     * Wether the command should be enabled or not.
+     */
+    enabled?: boolean;
 }
 
 /**
