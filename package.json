@@ -22,7 +22,7 @@
   "workspaces": [
     "discord",
     "commons",
-    "server"
+    "backend"
   ],
   "private": true
 }
