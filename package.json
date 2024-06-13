@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "bun run build && bun run ./scripts/main.ts",
-    "build": "bun build ./scripts/main.ts --target=bun --outdir=./dist --sourcemap",
+    "build": "bun build ./scripts/main.ts --target=bun --outdir=./dist --minify",
     "prod": "bun run ./dist/main.js",
     "test": "echo todo",
     "docker": "docker build . -t openbot"
