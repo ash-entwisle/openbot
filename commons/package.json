@@ -1,12 +1,16 @@
 {
   "name": "openbot-commons",
-  "module": "index.ts",
-  "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest"
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc ./src/*.ts --declaration --outDir ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "private": true,
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.4.5"
   },
-  "private": true
+  "devDependencies": {
+    "@types/node": "^20.14.2"
+  }
 }

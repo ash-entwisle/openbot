@@ -29,7 +29,9 @@ export class Bot {
         this.client = new Client({ intents: [GatewayIntentBits.Guilds] });
         this.commands = new Collection();
         this.events = new Collection();
-        this.config = toml.parse(fs.readFileSync(`${__dirname}/../../${Bun.env.BOT_CONFIG}`, 'utf-8'));
+
+        console.log(`${__dirname}/../../${process.env.OPENBOT_CONFIG}`)
+        this.config = toml.parse(fs.readFileSync(`${__dirname}/../../${process.env.OPENBOT_CONFIG}`, 'utf-8'));
     }
 
     /**

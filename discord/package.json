@@ -2,11 +2,18 @@
   "name": "openbot-discord",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "build": "tsc ./*.ts --declaration --outDir ../dist/discord"
+  },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/node": "20.14.2"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "private": true
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "openbot-commons": "file:../commons"
+  }
 }

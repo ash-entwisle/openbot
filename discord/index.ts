@@ -1,12 +1,15 @@
 import path from "node:path";
-import { commandLoader } from "./scripts/commandLoader";
-import { commandRegister } from "./scripts/commandRegister";
-import { eventLoader } from "./scripts/eventLoader";
+import { commandLoader } from "./helpers/commandLoader";
+import { commandRegister } from "./helpers/commandRegister";
+import { eventLoader } from "./helpers/eventLoader";
 import { Bot } from "./libs/bot";
-import { Logger } from "./libs/logger";
+import { Logger } from "openbot-commons/logger";
+import dotenv from "dotenv";
 
 
-function startBot() {
+async function startBot() {
+  dotenv.config(); // Load .env file
+
   Logger.info("Starting Bot...");
 
   // Initialise Client
@@ -25,8 +28,7 @@ function startBot() {
 
   Logger.info("Events loaded");
 
-  // login
-  bot.client.login(Bun.env.DISCORD_TOKEN);
+  bot.client.login(process.env.OPENBOT_TOKEN);
 
   // Log that the bot is ready
   bot.client.on("ready", () => {

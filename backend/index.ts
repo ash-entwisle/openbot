@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
-import { Logger } from '../discord/libs/logger'
+import { Logger } from 'openbot-commons/logger'
 
-function startServer() {
+async function startServer() {
     
     const app = new Hono()
     app.get('/', (c) => c.text('Hono!'))
