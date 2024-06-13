@@ -30,8 +30,14 @@ export class Bot {
         this.commands = new Collection();
         this.events = new Collection();
 
-        console.log(`${__dirname}/../../${process.env.OPENBOT_CONFIG}`)
-        this.config = toml.parse(fs.readFileSync(`${__dirname}/../../${process.env.OPENBOT_CONFIG}`, 'utf-8'));
+        // console.log(`${__dirname}/../../${process.env.OPENBOT_CONFIG}`)
+        // this.config = toml.parse(fs.readFileSync(`${__dirname}/../../${process.env.OPENBOT_CONFIG}`, 'utf-8'));
+
+        const configData = fs.readFileSync(`./config.toml`, 'utf-8');
+        this.config = toml.parse(configData);
+
+        console.log(`./${process.env.OPENBOT_CONFIG}`)
+        this.config = toml.parse(fs.readFileSync(`./${process.env.OPENBOT_CONFIG}`, 'utf-8'));
     }
 
     /**

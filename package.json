@@ -3,8 +3,8 @@
   "module": "./src/main.ts",
   "type": "module",
   "scripts": {
-    "start": "bun run ./scripts/main.ts",
-    "build": "bun build ./scripts/main.ts --target=bun --outdir=./dist",
+    "start": "bun run build && bun run ./scripts/main.ts",
+    "build": "bun build ./scripts/main.ts --target=bun --outdir=./dist --sourcemap",
     "prod": "bun run ./dist/main.js",
     "test": "echo todo",
     "docker": "docker build . -t openbot"
