@@ -2,6 +2,9 @@
   "name": "openbot-backend",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "build": "tsc ./*.ts --declaration --outDir ../dist/backend"
+  },
   "devDependencies": {
     "@types/node": "20.14.2"
   },
