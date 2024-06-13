@@ -1,22 +1,22 @@
-import { uptime } from '../../libs/sysinfo'
+import { latency } from 'openbot-commons/sysinfo';
+import { EMessageType, message } from '../../libs/message';
 import { Command } from '../../libs/command';
-import { message, EMessageType } from '../../libs/message';
 
 export const data = new Command({
-    name: 'uptime',
-    description: 'gets the uptime of the discord bot',
+    name: 'ping',
+    description: 'Get the latency of the bot.',
     dmPermission: true,
     nsfw: false,
     admin: false,
     execute: execute
-});
+})
 
 export async function execute(interaction: any) {
     message({
         type: EMessageType.Message,
         interaction: interaction,
         title: "",
-        content: `**Uptime**: \`${uptime()}\``,
+        content: `**Latency:** \`${latency(interaction)}ms.\``,
         ephemeral: true
     });
 }

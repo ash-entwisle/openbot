@@ -1,6 +1,6 @@
 import { Bot } from "../libs/bot";
 import { REST, Routes } from 'discord.js';
-import { Logger } from "../libs/logger";
+import { Logger } from "openbot-commons/logger";
 
 const fs = require('node:fs');
 const path = require('node:path');
@@ -32,7 +32,7 @@ export function commandRegister(bot: Bot) {
     }
 
     // Construct and prepare an instance of the REST module
-    const rest = new REST().setToken(Bun.env.DISCORD_TOKEN!);
+    const rest = new REST().setToken(process.env.OPENBOT_TOKEN!);
 
     // and deploy your commands!
     (async () => {
@@ -41,7 +41,7 @@ export function commandRegister(bot: Bot) {
 
             // The put method is used to fully refresh all commands in the guild with the current set
             const data = await rest.put(
-                Routes.applicationCommands(Bun.env.DISCORD_ID!),
+                Routes.applicationCommands(process.env.OPENBOT_ID!),
                 { body: commands },
             );
 

@@ -1,0 +1,14 @@
+{
+  "name": "openbot-backend",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "20.14.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "hono": "^4.4.5"
+  }
+}

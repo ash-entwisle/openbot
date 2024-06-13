@@ -4,9 +4,9 @@
     "types": ["@types/node"],
 
     // enable latest features
-    "lib": ["esnext"],
-    "module": "esnext",
-    "target": "esnext",
+    "lib": ["ES2015", "ESNext"],
+    "module": "ESNext",
+    "target": "ESNext",
 
     // if TS 5.x+
     "moduleResolution": "bundler",

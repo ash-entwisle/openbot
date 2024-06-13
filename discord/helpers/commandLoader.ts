@@ -1,4 +1,4 @@
-import { Logger } from "../libs/logger";
+import { Logger } from "openbot-commons/logger";
 
 const fs = require('node:fs');
 const path = require('node:path');

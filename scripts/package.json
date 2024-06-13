@@ -1,0 +1,16 @@
+{
+  "name": "openbot-scripts",
+  "module": "main.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "20.14.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "openbot-backend": "file:../backend",
+    "openbot-commons": "file:../commons",
+    "openbot-discord": "file:../discord"
+  }
+}

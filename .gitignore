@@ -169,4 +169,5 @@ dist
 .pnp.\*
 
 target/
-.lockb
+*.lockb
+package-lock.json
