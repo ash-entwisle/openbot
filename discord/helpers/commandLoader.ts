@@ -1,4 +1,5 @@
 import { Logger } from "openbot-commons/logger";
+import { commandMap } from "./commands";
 
 const fs = require('node:fs');
 const path = require('node:path');
@@ -13,19 +14,16 @@ const { Collection } = require('discord.js');
 export function commandLoader(foldersPath: string) {
 
     let commands = new Collection();
-    const commandFolders = fs.readdirSync(foldersPath);
+    let cmdMap = commandMap();
 
-    for (const folder of commandFolders) {
-        const commandsPath = path.join(foldersPath, folder);
-        const commandFiles = fs.readdirSync(commandsPath).filter((file: string) => file.endsWith('.ts'));
-        for (const file of commandFiles) {
-            const filePath = path.join(commandsPath, file);
-            const command = require(filePath);
-            if ('data' in command && 'execute' in command && !command.data.disabled) {
-                commands.set(command.data.command.name, command);
-            } else {
-                Logger.warn(`The command at ${filePath} is missing a required "data" or "execute" property.`);
-            }
+    // for each command in the commandMap, add it to the commands collection
+    for (const command in commandMap) {
+        // check if the command has the required properties
+        if (cmdMap[command].data && cmdMap[command].exec) {
+            // add the command to the collection
+            commands.set(command, cmdMap[command]);
+        } else {
+            Logger.warn(`The command at ${command} is missing a required "data" or "exec" property.`);
         }
     }
 

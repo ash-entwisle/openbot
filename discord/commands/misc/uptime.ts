@@ -1,4 +1,4 @@
-import { uptime } from 'openbot-commons/sysinfo'
+import { uptime } from 'openbot-commons/src/sysinfo'
 import { Command } from '../../libs/command';
 import { message, EMessageType } from '../../libs/message';
 
