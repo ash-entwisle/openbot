@@ -1,4 +1,4 @@
-import { latency } from 'openbot-commons/sysinfo';
+import { latency } from 'openbot-commons/src/sysinfo';
 import { EMessageType, message } from '../../libs/message';
 import { Command } from '../../libs/command';
 
