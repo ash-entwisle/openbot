@@ -1,9 +1,0 @@
-
-services:
-  openbot:
-    image: ghcr.io/ash-entwisle/openbot:main
-    volumes:
-      - ./config.toml:/usr/src/app/config.toml
-    env_file:
-      - ./.env
-    restart: unless-stopped
