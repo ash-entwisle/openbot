@@ -3,7 +3,7 @@ import { commandLoader } from "./helpers/commandLoader";
 import { commandRegister } from "./helpers/commandRegister";
 import { eventLoader } from "./helpers/eventLoader";
 import { Bot } from "./libs/bot";
-import { Logger } from "openbot-commons/logger";
+import { Logger } from "openbot-commons";
 import dotenv from "dotenv";
 
 

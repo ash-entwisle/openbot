@@ -1,10 +1,17 @@
-import { latency } from 'openbot-commons/src/sysinfo';
+import { latency } from 'openbot-commons';
 import { EMessageType, message } from '../../libs/message';
 import { Command } from '../../libs/command';
 
 export const data = new Command({
     name: 'ping',
     description: 'Get the latency of the bot.',
+    subcommands: [
+        {
+            name: 'ping',
+            description: 'Get the latency of the bot.'
+        }
+
+    ],
     dmPermission: true,
     nsfw: false,
     admin: false,

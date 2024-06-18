@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { Logger } from 'openbot-commons/logger'
+import { Logger } from 'openbot-commons'
 
 async function startServer() {
     

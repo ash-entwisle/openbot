@@ -17,6 +17,9 @@ export interface ICommandData {
      * @default []
      */
     options?: ICommandOption[];
+
+    subcommands?: ICommandData[];
+
     /**
      * Whether the command can be executed in a DM.
      * @default false
@@ -117,6 +120,8 @@ export class Command {
      */
     public admin: boolean;
 
+    public enabled: boolean;
+
     /**
      * The function that is executed when the command is invoked.
      * @param interaction The interaction object that represents the command invocation.
@@ -138,6 +143,7 @@ export class Command {
 
         this.admin = data.admin ?? false;
         this.execute = data.execute;
+        this.enabled = data.enabled ?? true;
 
         if (data.options) {
             for (const option of data.options){
