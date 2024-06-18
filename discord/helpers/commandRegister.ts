@@ -39,12 +39,12 @@ export function commandRegister(bot: Bot) {
             // console.log(ac);
 
             // only uncomment if the discord API is being stubborn (like honestly... why...)
-            const gc = await rest.put(
-                Routes.applicationGuildCommands(process.env.OPENBOT_ID!, process.env.OPENBOT_GUILD!),
-                { body: cmds },
-            );
+            // const gc = await rest.put(
+            //     Routes.applicationGuildCommands(process.env.OPENBOT_ID!, process.env.OPENBOT_GUILD!),
+            //     { body: cmds },
+            // );
 
-            console.log(cmds);
+            // console.log(cmds);
 
             Logger.info(`Successfully reloaded ${cmds.length} application (/) commands.`);
             
