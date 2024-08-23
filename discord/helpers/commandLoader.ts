@@ -17,8 +17,8 @@ export function commandLoader(foldersPath: string) {
 
     // for each command in COMMANDS, add it to the commands collection
     COMMANDS.forEach(command => {
-        if (command.data) {
-            commands.set(command.data.command.name, command);
+        if (command.command) {
+            commands.set(command.command.command.name, command);
         } else {
             Logger.error(`A command failed to load, missing required properties (either "data" or "exec"). Skipping...`);
         }

@@ -1,11 +1,11 @@
 import { ChatInputCommandInteraction, Interaction } from 'discord.js';
-import { Command, ECommandOption } from '../../libs/command';
+import { Command, ECommandOption, ICommandData } from '../../libs/command';
 import { message, EMessageType } from '../../libs/message';
 import { Bot } from '../../libs/bot';
 import Quote from 'openbot-commons/types/quote';
 
-export const data = new Command({
-    name: 'quote_add',
+export const data: ICommandData = {
+    name: 'add',
     description: 'Add a new quote',
     options: [
         {
@@ -32,7 +32,9 @@ export const data = new Command({
     admin: false,
     enabled: true,
     execute: execute
-});
+};
+
+export const command = new Command(data);
 
 export async function execute(interaction: ChatInputCommandInteraction) {
     

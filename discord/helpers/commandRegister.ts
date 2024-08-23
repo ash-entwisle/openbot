@@ -15,8 +15,8 @@ export function commandRegister(bot: Bot) {
     let cmds: string | any[] = [];
 
     COMMANDS.forEach(command => {
-        if (command.data) {
-            cmds.push(command.data.command.toJSON());
+        if (command.command) {
+            cmds.push(command.command.command.toJSON());
         } else {
             Logger.warn(`A command failed to register, missing required properties (either "data" or "exec"). Skipping...`);
         }

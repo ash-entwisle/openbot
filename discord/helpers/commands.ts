@@ -29,9 +29,6 @@ export const COMMANDS: any[] = [
 
     // quote commands
     require("../commands/quotes/quote"),
-    require("../commands/quotes/list"),
-    require("../commands/quotes/add"),
-    require("../commands/quotes/delete"),
 ]
 
 // export function commandMap() {

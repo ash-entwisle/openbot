@@ -1,4 +1,5 @@
-import { Attachment, SlashCommandBuilder } from "discord.js";
+import { Attachment, SlashCommandBuilder, SlashCommandSubcommandBuilder } from "discord.js";
+import { match } from "node:assert";
 
 /**
  * Represents the data required to define a command.
@@ -18,7 +19,12 @@ export interface ICommandData {
      */
     options?: ICommandOption[];
 
-    subcommands?: ICommandData[];
+    //subcommands?: ISubCommandData[];
+    subcommands?: {
+        command: Command, 
+        data: ICommandData,
+        exec: (interaction: any) => void
+    }[];
 
     /**
      * Whether the command can be executed in a DM.
@@ -90,6 +96,11 @@ export interface ICommandOptionChoice {
     value: string | number;
 }
 
+export interface ISubCommandData {
+    data: ICommandData;
+    exec: (interaction: any) => void;
+}
+
 /**
  * Enum representing the different types of options that can be used for a command.
  */
@@ -135,6 +146,16 @@ export class Command {
      * @returns Command
      */
     constructor(data: ICommandData) {
+
+        // // for each subcommand in data, check if its nsfw and or it with data.nsfw
+        let nsfw = data.nsfw;
+        let dmPermission = data.dmPermission;
+
+        data.subcommands?.forEach(subcommand => {
+            nsfw = nsfw || (subcommand.data.nsfw ?? false);
+            dmPermission = dmPermission || (subcommand.data.dmPermission ?? false);
+        });
+
         this.command = new SlashCommandBuilder()
             .setName(data.name)
             .setDescription(data.description)
@@ -191,6 +212,82 @@ export class Command {
                     .setDescription(option.description)
                     .setRequired(option.required ?? false);
             }
+
+            // console.log(this.command.toJSON());
+
+            if (data.subcommands) {
+
+                console.log("Subcommands found");
+
+                for (const subcommand of data.subcommands) {
+                    let temp = new SlashCommandSubcommandBuilder()
+
+                    console.log("Subcommand: " + subcommand.data.name);
+
+                    temp.setName(subcommand.data.name)
+                        .setDescription(subcommand.data.description)
+                        // .setDMPermission(subcommand.data.dmPermission ?? false)  // Handled by parent command
+                        // .setNSFW(subcommand.data.nsfw ?? false);                 // Handled by parent command    
+
+                    // console.log(subcommand.data.command.options);
+
+                    if (subcommand.data.options) {
+
+                        for (const option of subcommand.data.options!) {
+                            let tempOption: any;
+                            switch (option.type) {
+                                case ECommandOption.StringOption:
+                                    temp.addStringOption(option => tempOption = option);
+                                    break;
+                                case ECommandOption.IntegerOption:
+                                    temp.addIntegerOption(option => tempOption = option);
+                                    break;
+                                case ECommandOption.NumberOption:
+                                    temp.addNumberOption(option => tempOption = option);
+                                    break;
+                                case ECommandOption.BooleanOption:
+                                    temp.addBooleanOption(option => tempOption = option);
+                                    break;
+                                case ECommandOption.UserOption:
+                                    temp.addUserOption(option => tempOption = option);
+                                    break;
+                                case ECommandOption.ChannelOption:
+                                    temp.addChannelOption(option => tempOption = option);
+                                    break;
+                                case ECommandOption.RoleOption:
+                                    temp.addRoleOption(option => tempOption = option);
+                                    break;
+                                case ECommandOption.MentionableOption:
+                                    temp.addMentionableOption(option => tempOption = option);
+                                    break;
+                                case ECommandOption.AttachmentOption:
+                                    temp.addAttachmentOption(option => tempOption = option);
+                                    break;
+                                default:
+                                    throw new Error(`Invalid command option type: ${option.name}`);
+                            }
+
+                            if (option.choices) {
+                                for (const choice of option.choices) {
+                                    tempOption.addChoices({name: choice.name, value: choice.value});
+                                }
+                            }
+
+                            tempOption
+                                .setName(option.name)
+                                .setDescription(option.description)
+                                .setRequired(option.required ?? false);
+                        }
+
+
+                    }
+
+                    this.command.addSubcommand(temp);
+
+                }
+            }
         }
     }
 }
+
+// TODO: clean this shit up at some point...

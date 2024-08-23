@@ -9,6 +9,8 @@ export async function execute(interaction: any) {
 
     if (!interaction.isChatInputCommand()) return;
 
+    console.log(interaction.commandName);
+
 
     let bot = Bot.getInstance();
 
@@ -30,6 +32,7 @@ export async function execute(interaction: any) {
             await interaction.reply('You do not have permission to use this command.');
             return;
         } else {
+            
             await command.execute(interaction);
         }
 

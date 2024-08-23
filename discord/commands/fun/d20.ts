@@ -1,7 +1,7 @@
-import { Command, ECommandOption } from '../../libs/command';
+import { Command, ECommandOption, ICommandData } from '../../libs/command';
 import { message, EMessageType } from '../../libs/message';
 
-export const data = new Command({
+export const data: ICommandData = {
     name: 'd20',
     description: 'Rolls a D20',
     options: [
@@ -26,7 +26,7 @@ export const data = new Command({
     nsfw: false,
     admin: false,
     execute: execute
-});
+};
 
 export async function execute(interaction: any) {
     
