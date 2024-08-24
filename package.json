@@ -7,7 +7,7 @@
     "build": "bun build ./main.ts --target=bun --outdir=./dist --minify",
     "prod": "bun run ./dist/main.js",
     "test": "echo todo",
-    "docker": "docker build . -t openbot"
+    "docker": "docker build --platform linux/amd64 . -t openbot"
   },
   "peerDependencies": {
     "typescript": "^5.4.5"
@@ -20,7 +20,6 @@
   "private": true,
   "workspaces": [
     "commons",
-    "scripts",
     "backend",
     "discord"
   ]
