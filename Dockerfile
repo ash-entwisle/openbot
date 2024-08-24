@@ -3,6 +3,17 @@ FROM oven/bun:alpine as builder
 
 WORKDIR /app/
 
+RUN apk add --no-cache python3-dev
+RUN apk add --no-cache build-base
+RUN apk add --no-cache coreutils    
+RUN apk add --no-cache pkgconf
+RUN apk add --no-cache libtool
+RUN apk add --no-cache make
+RUN apk add --no-cache gcc
+RUN apk add --no-cache clang
+RUN apk add --no-cache libc-dev
+RUN apk add --no-cache sqlite
+
 # Copy app source
 COPY . .
 
