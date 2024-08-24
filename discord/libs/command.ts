@@ -133,6 +133,8 @@ export class Command {
 
     public enabled: boolean;
 
+    public data: ICommandData | undefined;
+
     /**
      * The function that is executed when the command is invoked.
      * @param interaction The interaction object that represents the command invocation.
@@ -140,16 +142,18 @@ export class Command {
      */
     public execute: (interaction: any) => void;
 
+
     /**
      * Creates a new Command object.
      * @param data An object that contains the command's properties.
      * @returns Command
      */
     constructor(data: ICommandData) {
-
-        // // for each subcommand in data, check if its nsfw and or it with data.nsfw
+        
         let nsfw = data.nsfw;
         let dmPermission = data.dmPermission;
+        
+        this.data = data;   // Save the data for later use, mainly for subcmds
 
         data.subcommands?.forEach(subcommand => {
             nsfw = nsfw || (subcommand.data.nsfw ?? false);

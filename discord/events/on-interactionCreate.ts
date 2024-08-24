@@ -9,9 +9,6 @@ export async function execute(interaction: any) {
 
     if (!interaction.isChatInputCommand()) return;
 
-    console.log(interaction.commandName);
-
-
     let bot = Bot.getInstance();
 
     const command = bot.commands.get(interaction.commandName);
@@ -33,6 +30,24 @@ export async function execute(interaction: any) {
             return;
         } else {
             
+            // if the interaction is a subcommand, find the subcommand and execute it
+
+            if (interaction.options.getSubcommand()) {
+                let subcommandName = interaction.options.getSubcommand();
+
+                let subcommand = command.data?.subcommands?.find((
+                    subcommand: { data: { name: any; }; }) => 
+                    subcommand.data.name === subcommandName
+                );
+
+                if (subcommand) {
+                    await subcommand.exec(interaction);
+                } else {
+                    Logger.error(`No subcommand matching ${subcommandName} was found.`);
+                }
+            }
+
+        
             await command.execute(interaction);
         }
 

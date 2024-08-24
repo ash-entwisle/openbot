@@ -26,11 +26,14 @@ export const command = new Command(data);
 export async function execute(interaction: any) {
 
     // find the subcommand name in data.subcommands and call exec
-    data.subcommands!.forEach((subcommand) => {
-        if (subcommand.data.name === interaction.options.getSubcommand()) {
-            subcommand.exec(interaction);
-        }
-    });
+
+    // if interaction is a command interaction and has a subcommand, find the exec of the subcommand in the command and then call it
+
+    // data.subcommands!.forEach((subcommand) => {
+    //     if (subcommand.data.name === interaction.options.getSubcommand()) {
+    //         subcommand.exec(interaction);
+    //     }
+    // });
 
 
     // const guildID = interaction.guild ? interaction.guild.id : 0;  
