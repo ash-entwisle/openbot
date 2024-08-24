@@ -1,10 +1,10 @@
 {
   "name": "openbot",
-  "module": "./main.ts",
+  "module": "./src/main.ts",
   "type": "module",
   "scripts": {
-    "start": "bun run ./main.ts",
-    "build": "bun build ./main.ts --target=bun --outdir=./dist --minify",
+    "start": "bun run ./src/main.ts",
+    "build": "bun build ./src/main.ts --target=bun --outdir=./dist --minify",
     "prod": "bun run ./dist/main.js",
     "test": "echo todo",
     "docker": "docker build --platform linux/amd64 . -t openbot"
@@ -14,13 +14,11 @@
   },
   "dependencies": {
     "discord.js": "^14.11.0",
-    "openbot-commons": "^1.0.0",
+    "hono": "^4.5.8",
     "toml": "^3.0.0"
   },
   "private": true,
-  "workspaces": [
-    "commons",
-    "backend",
-    "discord"
-  ]
+  "devDependencies": {
+    "bun-types": "^1.1.26"
+  }
 }
