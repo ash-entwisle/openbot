@@ -1,5 +1,5 @@
 import { Events } from 'discord.js';
-import { Logger } from 'openbot-commons/logger';
+import { Logger } from 'openbot-commons';
 
 export const name = Events.ClientReady;
 export const once = true;

@@ -1,7 +1,7 @@
-import { Command, ECommandOption } from '../../libs/command';
+import { Command, ECommandOption, ICommandData } from '../../libs/command';
 import { message, EMessageType } from '../../libs/message';
 
-export const data = new Command({
+export const data: ICommandData = {
     name: 'coinflip',
     description: 'Flips a coin',
     options: [
@@ -25,7 +25,10 @@ export const data = new Command({
     nsfw: false,
     admin: false,
     execute: execute
-});
+};
+
+
+export const command = new Command(data);
 
 export async function execute(interaction: any) {
     const choice = interaction.options.getString('choice');

@@ -1,15 +1,17 @@
-import { uptime } from 'openbot-commons/src/sysinfo'
-import { Command } from '../../libs/command';
+import { uptime } from 'openbot-commons'
+import { Command, ICommandData } from '../../libs/command';
 import { message, EMessageType } from '../../libs/message';
 
-export const data = new Command({
+export const data: ICommandData = {
     name: 'uptime',
     description: 'gets the uptime of the discord bot',
     dmPermission: true,
     nsfw: false,
     admin: false,
     execute: execute
-});
+};
+
+export const command = new Command(data);
 
 export async function execute(interaction: any) {
     message({

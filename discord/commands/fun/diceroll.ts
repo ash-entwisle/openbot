@@ -1,7 +1,7 @@
-import { Command, ECommandOption } from '../../libs/command';
+import { Command, ECommandOption, ICommandData } from '../../libs/command';
 import { message, EMessageType } from '../../libs/message';
 
-export const data = new Command({
+export const data: ICommandData = {
     name: 'diceroll',
     description: 'Rolls a Dice using standard dice notation. Example: 1d20+5',
     options: [
@@ -16,7 +16,9 @@ export const data = new Command({
     nsfw: false,
     admin: false,
     execute: execute
-});
+};
+
+export const command = new Command(data);
 
 export async function execute(interaction: any) {
     // get the choice from the user

@@ -1,7 +1,7 @@
 import { message, EMessageType } from '../../libs/message';
-import { Command, ECommandOption } from '../../libs/command';
+import { Command, ECommandOption, ICommandData } from '../../libs/command';
 
-export const data = new Command({
+export const data: ICommandData = {
     name: 'message',
     description: 'Sends a message as the bot.',
     options: [
@@ -26,7 +26,9 @@ export const data = new Command({
     nsfw: false,
     admin: false,
     execute: execute
-})
+};
+
+export const command = new Command(data);
 
 export async function execute(interaction: any) {
     const text = interaction.options.getString('message');

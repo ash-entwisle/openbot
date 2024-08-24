@@ -1,4 +1,4 @@
-import { Logger } from 'openbot-commons/logger';
+import { Logger } from 'openbot-commons';
 import startBot from 'openbot-discord';
 import startServer from 'openbot-backend';
 
