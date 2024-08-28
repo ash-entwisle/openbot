@@ -1,8 +1,8 @@
 import { ChatInputCommandInteraction, Interaction } from 'discord.js';
-import { Command, ECommandOption, ICommandData } from '../../../commons/discord/command';
-import { message, EMessageType } from '../../../commons/discord/message';
-import { Bot } from '../../../commons/discord/bot';
-import Quote from '../../../commons/types/quote';
+import { Command, ECommandOption, ICommandData } from '../../../../commons/discord/command';
+import { send_message, EMessageType } from '../../../../commons/discord/message';
+import { Bot } from '../../../../commons/discord/bot';
+import Quote from '../../../../commons/types/quote';
 
 export const data: ICommandData = {
     name: 'add',

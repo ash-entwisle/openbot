@@ -1,5 +1,5 @@
 import { latency } from '../../../commons';
-import { EMessageType, message } from '../../../commons/discord/message';
+import { EMessageType, send_message } from '../../../commons/discord/message';
 import { Command, ICommandData } from '../../../commons/discord/command';
 import { ChatInputCommandInteraction } from 'discord.js';
 
@@ -18,7 +18,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 
     // console.log(interaction.toJSON());
 
-    message({
+    send_message({
         type: EMessageType.Message,
         interaction: interaction,
         title: "",

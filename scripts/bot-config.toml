@@ -1,8 +1,8 @@
 [info]
 
-name = "Bot Name"
-description = "Bot Description"
-invite = "Bot Invite Link"
+name = "Openbot" # change this to your bot's name
+description = "A Free, Customisable, Open-Source Discord Bot" # change this to your bot's description
+invite = "Bot Invite Link" # change this to your bot's invite link
 
 [embed]
 

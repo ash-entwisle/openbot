@@ -1,5 +1,5 @@
-import { message, EMessageType } from '../../../commons/discord/message';
-import { Command, ECommandOption, ICommandData } from '../../../commons/discord/command';
+import { send_message, EMessageType } from '../../../../commons/discord/message';
+import { Command, ECommandOption, ICommandData } from '../../../../commons/discord/command';
 
 export const data: ICommandData = {
     name: 'message',
@@ -35,7 +35,7 @@ export async function execute(interaction: any) {
     const ephemeral = interaction.options.getBoolean('ephemeral');
     const reply = interaction.options.getBoolean('reply');
 
-    message({
+    send_message({
         type: EMessageType.Message,
         interaction: interaction,
         content: text,

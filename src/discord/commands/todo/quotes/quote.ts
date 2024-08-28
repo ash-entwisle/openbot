@@ -1,6 +1,6 @@
-import { Command, ECommandOption, ICommandData } from '../../../commons/discord/command';
-import { message, EMessageType } from '../../../commons/discord/message';
-import { Quotes } from '../../../commons';
+import { Command, ECommandOption, ICommandData } from '../../../../commons/discord/command';
+import { send_message, EMessageType } from '../../../../commons/discord/message';
+import { Quotes } from '../../../../commons';
 import "./add";
 import { CommandInteraction } from 'discord.js';
 

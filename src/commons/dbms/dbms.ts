@@ -27,15 +27,15 @@ export class DBMS {
             //     )
             // `);
 
-            DBMS.instance.exec(`
-                CREATE TABLE IF NOT EXISTS quotes (
-                    guildID TEXT,
-                    userID TEXT,
-                    quote TEXT,
-                    author TEXT,
-                    global INTEGER
-                )
-            `);
+            // DBMS.instance.exec(`
+            //     CREATE TABLE IF NOT EXISTS quotes (
+            //         guildID TEXT,
+            //         userID TEXT,
+            //         quote TEXT,
+            //         author TEXT,
+            //         global INTEGER
+            //     )
+            // `);
         }
         return DBMS.instance;
     }

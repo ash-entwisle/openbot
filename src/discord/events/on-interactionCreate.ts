@@ -11,6 +11,8 @@ export async function execute(interaction: any) {
 
     let bot = Bot.getInstance();
 
+    console.log(interaction.toJSON());
+
     const command = bot.commands.get(interaction.commandName);
 
     if (!command) {
@@ -31,8 +33,16 @@ export async function execute(interaction: any) {
         } else {
             
             // if the interaction is a subcommand, find the subcommand and execute it
+            let isSubcommand = false;
 
-            if (interaction.options.getSubcommand()) {
+            try {
+                isSubcommand = interaction.options.getSubcommand();
+            } catch (error) {
+                isSubcommand = false;
+            }
+
+            if (isSubcommand) {
+
                 let subcommandName = interaction.options.getSubcommand();
 
                 let subcommand = command.data?.subcommands?.find((
@@ -45,10 +55,9 @@ export async function execute(interaction: any) {
                 } else {
                     Logger.error(`No subcommand matching ${subcommandName} was found.`);
                 }
+            } else {
+                await command.execute(interaction);
             }
-
-        
-            await command.execute(interaction);
         }
 
 

@@ -36,12 +36,16 @@ COPY --from=builder /app/dist/ .
 
 
 # add non priviledged user
-# RUN addgroup -S bot 
-# RUN adduser -S bot -G bot
-# RUN chown -R bot:bot /app
+RUN addgroup -S bot 
+RUN adduser -S bot -G bot
+RUN chown -R bot:bot /app
 
 # switch to non priviledged user
-# USER bot
+USER bot
+
+# create non privelaged user for eval command
+RUN addgroup -S eval
+RUN adduser -S eval -G eval
 
 # start app
 CMD [ "bun", "run", "main.js" ]

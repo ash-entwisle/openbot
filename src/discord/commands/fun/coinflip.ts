@@ -1,5 +1,5 @@
 import { Command, ECommandOption, ICommandData } from '../../../commons/discord/command';
-import { message, EMessageType } from '../../../commons/discord/message';
+import { EMessageType, send_message } from '../../../commons/discord/message';
 
 export const data: ICommandData = {
     name: 'coinflip',
@@ -40,7 +40,7 @@ export async function execute(interaction: any) {
     let response = "";
     if (question) response = `You asked: ${question}\n**heads** means yes, **tails** means no.\n`;
 
-    message({
+    send_message({
         type: EMessageType.Message,
         interaction: interaction,
         title: 'Coinflip',

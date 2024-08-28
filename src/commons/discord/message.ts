@@ -67,7 +67,7 @@ export enum EMessageType {
 }
 
 
-export function message(data: IMessage) {
+export function send_message(data: IMessage) {
     if (data.type === EMessageType.Embed) {
         
         let embed = new EmbedBuilder().setColor(data.color ?? Bot.getInstance().config.embed.color)
@@ -108,5 +108,5 @@ export function message(data: IMessage) {
 }
 
 export default {
-    message,
+    send_message,
 }

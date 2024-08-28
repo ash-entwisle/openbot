@@ -20,15 +20,14 @@ export const COMMANDS: any[] = [
     require("../commands/fun/coinflip"),
     require("../commands/fun/d20"),
     require("../commands/fun/diceroll"),
-    require("../commands/fun/gif"),
-    require("../commands/fun/pic"),
-    require("../commands/fun/rps"),
 
     // misc commands
+    require("../commands/misc/eval"),
+    require("../commands/misc/pfp"),
     require("../commands/misc/ping"),
+    require("../commands/misc/uptime"),
 
-    // quote commands
-    require("../commands/quotes/quote"),
+
 ]
 
 // export function commandMap() {

@@ -1,5 +1,5 @@
 import { Command, ECommandOption, ICommandData } from '../../../commons/discord/command';
-import { message, EMessageType } from '../../../commons/discord/message';
+import { send_message, EMessageType } from '../../../commons/discord/message';
 
 export const data: ICommandData = {
     name: 'd20',
@@ -54,7 +54,7 @@ export async function execute(interaction: any) {
 
     result += +rollModifier;
 
-    message({
+    send_message({
         type: EMessageType.Message,
         interaction: interaction,
         title: `Dice Roll: 1d20${rollModifier ?? ""} ${rollEnhancement ? `(with ${rollEnhancement})` : ""}`,
